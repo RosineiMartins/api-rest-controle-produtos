@@ -2,23 +2,23 @@ package com.rosineimartins.projetoprodutos.repository;
 
 
 import com.rosineimartins.projetoprodutos.model.Produto;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class ProdutoRepository {
-
     List<Produto> produtoList = new ArrayList<>();
     private Integer ultimoId = 0;
 
     /**
      * Metodo que retorna uma lista de produtos
-     *
      * @return lista de produto
      */
-    private List<Produto> obterTodos() {
+    public List<Produto> obterTodos() {
         return produtoList;
     }
 
@@ -28,7 +28,7 @@ public class ProdutoRepository {
      * @param produto
      * @return produto
      */
-    private Produto cadastrarProduto(Produto produto) {
+    public Produto cadastrarProduto(Produto produto) {
         ultimoId++;
         produto.setId(ultimoId);
         produtoList.add(produto);
@@ -41,7 +41,7 @@ public class ProdutoRepository {
      * @param id do produto que será localizado
      * @return retorna um produto caso seja encontrado
      */
-    private Optional<Produto> obterPorId(Integer id) {
+    public Optional<Produto> obterPorId(Integer id) {
         return produtoList.stream()
                 .filter(produto -> produto.getId() == id)
                 .findFirst();
@@ -52,9 +52,8 @@ public class ProdutoRepository {
      *
      * @param id do produto a ser deletado
      */
-    private void deletarProduto(Integer id) {
+    public void deletarProduto(Integer id) {
         produtoList.removeIf(produto -> produto.getId() == id);
-
     }
 
     /**
@@ -62,7 +61,7 @@ public class ProdutoRepository {
      * @param produto que será aualizado
      * @return o produto após atualizar
      */
-    private Produto atualizar(Produto produto) {
+    public Produto atualizar(Produto produto) {
         //1o encontrar o produto na lista
         Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
         if (produtoEncontrado.isEmpty()) {
@@ -74,5 +73,4 @@ public class ProdutoRepository {
         produtoList.add(produto);
         return produto;
     }
-
 }
