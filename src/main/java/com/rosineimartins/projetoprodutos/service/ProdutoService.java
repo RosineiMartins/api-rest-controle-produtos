@@ -4,6 +4,7 @@ import com.rosineimartins.projetoprodutos.model.Produto;
 import com.rosineimartins.projetoprodutos.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -16,7 +17,7 @@ public class ProdutoService {
      * Metodo que retorna uma lista de produtos
      * @return lista de produto
      */
-    private List<Produto> listarProdutos() {
+    public List<Produto> obterTodos() {
        return produtoRepository.obterTodos();
     }
 
