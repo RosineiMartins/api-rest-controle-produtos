@@ -2,6 +2,7 @@ package com.rosineimartins.projetoprodutos.repository;
 
 
 import com.rosineimartins.projetoprodutos.model.Produto;
+import com.rosineimartins.projetoprodutos.model.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -53,7 +54,9 @@ public class ProdutoRepository {
      * @param id do produto a ser deletado
      */
     public void deletarProduto(Integer id) {
-        produtoList.removeIf(produto -> produto.getId() == id);
+        if (!produtoList.removeIf(produto -> produto.getId() == id)) {
+            throw new ResourceNotFoundException("Produto nao encontrado");
+        }
     }
 
     /**
@@ -65,7 +68,7 @@ public class ProdutoRepository {
         //1o encontrar o produto na lista
         Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
         if (produtoEncontrado.isEmpty()) {
-            throw new InputMismatchException("Produto nao encontrado");
+            throw new ResourceNotFoundException("Produto nao encontrado");
         }
         //2o remover o poduto da lista
         deletarProduto(produto.getId());

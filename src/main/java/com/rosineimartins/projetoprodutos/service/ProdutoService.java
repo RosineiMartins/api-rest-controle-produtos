@@ -1,6 +1,7 @@
 package com.rosineimartins.projetoprodutos.service;
 
 import com.rosineimartins.projetoprodutos.model.Produto;
+import com.rosineimartins.projetoprodutos.model.exception.ResourceNotFoundException;
 import com.rosineimartins.projetoprodutos.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
