@@ -1,11 +1,7 @@
-package com.rosineimartins.projetoprodutos.model;
+package com.rosineimartins.projetoprodutos.shared;
 
-import javax.persistence.*;
+public class ProdutoDto {
 
-@Entity
-public class Produto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String nome;

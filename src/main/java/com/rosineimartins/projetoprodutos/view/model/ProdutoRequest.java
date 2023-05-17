@@ -1,26 +1,12 @@
-package com.rosineimartins.projetoprodutos.model;
+package com.rosineimartins.projetoprodutos.view.model;
 
-import javax.persistence.*;
-
-@Entity
-public class Produto {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class ProdutoRequest {
 
     private String nome;
 
     private Integer quantidade;
 
     private String observacao;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
